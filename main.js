@@ -81,6 +81,14 @@ function game() {
         output = output + ` Player's score is ${playerScore}, and the computer's is ${computerScore}.`
         console.log(output);
     }
+
+    if (playerScore > computerScore) {
+        console.log("You won the game!");
+    } else if (playerScore === computerScore) {
+        console.log("You tied the game.");
+    } else {
+        console.log("You lost the game. :(");
+    }
 }
 
 game();
