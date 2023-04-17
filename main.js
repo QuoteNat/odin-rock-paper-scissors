@@ -61,6 +61,25 @@ function game() {
                 console.log("That was not a valid input, please enter a valid input.");
             }
         }
+        let computerChoice = getComputerChoice();
+        let output = "The computer played " + computerChoice + ". ";
+        let results = playRound(input, computerChoice);
+        switch(results) {
+            case "tie":
+                output = output + "It's a tie.";
+                break;
+            case "win":
+                playerScore += 1;
+                output = output + "You win this round.";
+                break;
+            case "lose":
+                computerScore += 1;
+                output = output + "You lose this round."
+                break;
+        }
+
+        output = output + ` Player's score is ${playerScore}, and the computer's is ${computerScore}.`
+        console.log(output);
     }
 }
 
