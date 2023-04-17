@@ -46,7 +46,22 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = "Rock";
-const computerSelection = getComputerChoice();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection));
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (i = 0; i < 5; i++) {
+        let goodInput = false;
+        let input = "";
+        while (!goodInput) {
+            input = prompt("Enter your play (rock, paper, or scissors): ").toLowerCase();
+            if (input === "rock" || input === "paper" || input === "scissors") {
+                goodInput = true;
+            } else {
+                console.log("That was not a valid input, please enter a valid input.");
+            }
+        }
+    }
+}
+
+game();
