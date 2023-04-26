@@ -1,3 +1,8 @@
+let playerScore = 0;
+let computerScore = 0;
+let lastPlayerMove = "";
+let lastComputerMove = "";
+
 function getRandomInt(max) {
     return Math.floor(Math.random() * max) + 1;
 }
@@ -17,33 +22,49 @@ function getComputerChoice() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
+function displayResults(result) {
+    const lastRoundText = document.querySelector('#last-round');
+    lastRoundText.textContent = `You played ${lastPlayerMove}, 
+    and the computer played ${lastComputerMove}. You ${result} the round.`
+}
 
+function playRound(playerSelection, computerSelection) {
+    if (playerScore >= 5 || computerScore >= 5) return "game-over";
+    playerSelection = playerSelection.toLowerCase();
+    lastPlayerMove = playerSelection;
+    lastComputerMove = computerSelection;
+    let result = "";
     if (playerSelection === computerSelection) {
-        return "tie";
+        result = "tie";
     } else if (playerSelection === "rock") {
         switch(computerSelection) {
             case "scissors":
-                return "win";
+                playerScore += 1;
+                result = "win";
             case "paper":
-                return "lose";
+                computerScore += 1;
+                result = "lose";
         }
     } else if (playerSelection === "scissors") {
         switch(computerSelection) {
             case "paper":
-                return "win";
+                playerScore += 1;
+                result = "win";
             case "rock":
-                return "lose";
+                computerScore += 1;
+                result = "lose";
         }
     } else if (playerSelection === "paper") {
         switch(computerSelection) {
             case "rock":
-                return "win";
+                playerScore += 1;                
+                result = "win";
             case "scissors":
-                return "lose";
+                computerScore += 1;
+                result = "lose";
         }
     }
+    displayResults(result);
 }
 
 const rockBtn = document.querySelector('#rock');
