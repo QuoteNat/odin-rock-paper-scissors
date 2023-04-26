@@ -26,6 +26,8 @@ function displayResults(result) {
     const lastRoundText = document.querySelector('#last-round');
     lastRoundText.textContent = `You played ${lastPlayerMove}, 
     and the computer played ${lastComputerMove}. You ${result} the round.`
+    const scoreText = document.querySelector('#score');
+    scoreText.textContent = `Player=${playerScore} Computer=${computerScore}`;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -41,29 +43,36 @@ function playRound(playerSelection, computerSelection) {
             case "scissors":
                 playerScore += 1;
                 result = "win";
+                break;
             case "paper":
                 computerScore += 1;
                 result = "lose";
+                break;
         }
     } else if (playerSelection === "scissors") {
         switch(computerSelection) {
             case "paper":
                 playerScore += 1;
                 result = "win";
+                break;
             case "rock":
                 computerScore += 1;
                 result = "lose";
+                break;
         }
     } else if (playerSelection === "paper") {
         switch(computerSelection) {
             case "rock":
                 playerScore += 1;                
                 result = "win";
+                break;
             case "scissors":
                 computerScore += 1;
                 result = "lose";
+                break;
         }
     }
+    console.log(result);
     displayResults(result);
 }
 
