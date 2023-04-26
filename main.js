@@ -27,7 +27,13 @@ function displayResults(result) {
     lastRoundText.textContent = `You played ${lastPlayerMove}, 
     and the computer played ${lastComputerMove}. You ${result} the round.`
     const scoreText = document.querySelector('#score');
-    scoreText.textContent = `Player=${playerScore} Computer=${computerScore}`;
+    if (playerScore >= 5) {
+        scoreText.textContent = 'You win!';
+    } else if (computerScore >= 5) {
+        scoreText.textContent = 'You lose :(';
+    } else {
+        scoreText.textContent = `Player=${playerScore} Computer=${computerScore}`;
+    };
 }
 
 function playRound(playerSelection, computerSelection) {
